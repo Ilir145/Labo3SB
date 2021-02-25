@@ -9,9 +9,7 @@ import { ProduitService } from 'src/app/services/produit.service';
 })
 export class ProduitsComponent implements OnInit {
 
-  produits : Array<Produit> = [
-    {nom: 'a',id: 1, quantite : 3,description: 'top',tva: 0.12,prix: 1.99}
-  ] 
+  produits : Array<Produit>
 
 
   constructor(

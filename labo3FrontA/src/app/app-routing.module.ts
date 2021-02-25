@@ -6,7 +6,7 @@ import { DetailComponent } from './components/produits/detail/detail.component';
 
 const routes: Routes = [
   { path : 'produits', component : ProduitsComponent},
-  { path : 'produits/detail', component : DetailComponent},
+  { path : 'detail', component : DetailComponent},
 
 
   { path : '**', redirectTo : '/produits'}

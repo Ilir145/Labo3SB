@@ -14,7 +14,7 @@ produits : Array<Produit>
   constructor(private service_Produit : ProduitService) { }
 
   ngOnInit(): void {
-    this.service_Produit.getAllProduits
+    
   }
 
 

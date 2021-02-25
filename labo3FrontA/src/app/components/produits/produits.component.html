@@ -1,6 +1,6 @@
 <h5>Liste produits</h5>
 <ul>
     <li *ngFor="let p of produits">
-    <p>Nom : {{ p.nom }}   <a href="/produits/detail"> detail</a></p>
+    <p>{{ p.nom }} <td>  <a routerLink="/detail"> detail</a></p>
     </li>
 </ul>
