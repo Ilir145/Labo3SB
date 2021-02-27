@@ -30,13 +30,38 @@ public class DataInit implements InitializingBean {
                     .nomEntreprise("Kinder")
                     .secteur(Secteur.ALIMENTAIRE)
                     .statutSocial(StatutSocial.EURL)
+                    .build(),
+            Fournisseur.builder()
+                    .nomEntreprise("Popeye")
+                    .secteur(Secteur.SPORT)
+                    .statutSocial(StatutSocial.EURL)
+                    .build(),
+            Fournisseur.builder()
+                    .nomEntreprise("Secure")
+                    .secteur(Secteur.SECURITE)
+                    .statutSocial(StatutSocial.EURL)
                     .build()
 
     );
 
     private List<Categorie> categories = Arrays.asList(
             Categorie.builder()
+                    .nom("Alimentaire")
+                    .build(),
+            Categorie.builder()
                     .nom("Confiserie")
+                    .build(),
+            Categorie.builder()
+                    .nom("Sport")
+                    .build(),
+            Categorie.builder()
+                    .nom("Boisson")
+                    .build(),
+            Categorie.builder()
+                    .nom("Nettoyage")
+                    .build(),
+            Categorie.builder()
+                    .nom("Ménager")
                     .build()
     );
 
@@ -48,7 +73,7 @@ public class DataInit implements InitializingBean {
                     .prix(2D)
                     .tva(0.12)
                     .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories)
+                    .categorieList(categories.subList(0,1))
                     .build(),
             Produit.builder()
                     .nom("Kinder Maxi")
@@ -57,7 +82,7 @@ public class DataInit implements InitializingBean {
                     .prix(1.50)
                     .tva(0.12)
                     .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories)
+                    .categorieList(categories.subList(0,1))
                     .build(),
             Produit.builder()
                     .nom("Kinder Delice")
@@ -66,7 +91,7 @@ public class DataInit implements InitializingBean {
                     .prix(2.75)
                     .tva(0.12)
                     .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories)
+                    .categorieList(categories.subList(0,1))
                     .build(),
             Produit.builder()
                     .nom("Kinder Surprise")
@@ -75,7 +100,34 @@ public class DataInit implements InitializingBean {
                     .prix(1.99)
                     .tva(0.12)
                     .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories)
+                    .categorieList(categories.subList(0,1))
+                    .build(),
+            Produit.builder()
+                    .nom("Mercurial Vapor")
+                    .quantite(120)
+                    .description("Chaussure de foot tres legere")
+                    .prix(119.99)
+                    .tva(0.15)
+                    .fournisseur(fournisseurs.get(1))
+                    .categorieList(categories.subList(2,2))
+                    .build(),
+            Produit.builder()
+                    .nom("AlarmS2.0")
+                    .quantite(400)
+                    .description("Alarm avec fonction d appel")
+                    .prix(2000D)
+                    .tva(0.18)
+                    .fournisseur(fournisseurs.get(2))
+                    .categorieList(categories.subList(5,5))
+                    .build(),
+            Produit.builder()
+                    .nom("Coca zer canette")
+                    .quantite(400)
+                    .description("Canette de coca cola de 33cl")
+                    .prix(0.99)
+                    .tva(0.12)
+                    .fournisseur(fournisseurs.get(0))
+                    .categorieList(categories.subList(3,3))
                     .build()
 
     );
@@ -86,6 +138,24 @@ public class DataInit implements InitializingBean {
                     .prenom("Pierre")
                     .pseudo("Menes")
                     .mdp("10JONGLE")
+                    .build(),
+            Utilisateur.builder()
+                    .nom("Ibra")
+                    .prenom("Zlatan")
+                    .pseudo("IZ9")
+                    .mdp("zlatan")
+                    .build(),
+            Utilisateur.builder()
+                    .nom("Messi")
+                    .prenom("Leo")
+                    .pseudo("ML10")
+                    .mdp("fcbliga")
+                    .build(),
+            Utilisateur.builder()
+                    .nom("Zoro")
+                    .prenom("Roronoa")
+                    .pseudo("ashura")
+                    .mdp("nyitoryu")
                     .build()
     );
 

@@ -7,9 +7,12 @@ import be.techni.ilir.labo3SB.model.repository.CommandeRepository;
 import be.techni.ilir.labo3SB.model.repository.FournisseurRepository;
 import be.techni.ilir.labo3SB.model.repository.ProduitRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,8 +43,11 @@ public class ProduitService implements Crudable<Produit, ProduitDTO,Integer>{
     }
 
     @Override
-    public ProduitDTO getById(Integer integer) {
-        return null;
+    @GetMapping(path = "/{id}")
+    public ProduitDTO getById(@PathVariable("id") Integer integer) {
+        Produit produit = this.produitRepository.findById(integer).orElseThrow(() -> new NoSuchElementException("Le Produit n'existe pas"));
+
+        return mapper.toProduitDTO(produit);
     }
 
     @Override

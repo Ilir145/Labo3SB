@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
+import { Categorie } from '../modeles/categorie/categorie.module';
 import { Produit } from '../modeles/produit/produit.module';
 
 @Injectable({
@@ -22,5 +23,8 @@ export class ProduitService {
     return this._client.get<Array<Produit>>(this.url+"/produits")
   }
 
+  getOneProduits(id : number) : Observable<Produit>{
+    return this._client.get<Produit>(this.url+"/produits/"+id)
+  }
 
 }

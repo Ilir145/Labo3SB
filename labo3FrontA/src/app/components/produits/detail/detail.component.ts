@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Produit } from 'src/app/modeles/produit/produit.module';
 import { ProduitService } from 'src/app/services/produit.service';
 
@@ -9,12 +10,18 @@ import { ProduitService } from 'src/app/services/produit.service';
 })
 export class DetailComponent implements OnInit {
 
-produits : Array<Produit>
+  produit : Produit
 
-  constructor(private service_Produit : ProduitService) { }
+  constructor(
+    private service_Produit : ProduitService,
+    private _ar : ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
-    
+    let id = this._ar.snapshot.params['id']
+    this.service_Produit.getOneProduits(id).subscribe(p => {
+      this.produit = p
+    })
   }
 
 

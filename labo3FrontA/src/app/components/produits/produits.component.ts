@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Produit } from 'src/app/modeles/produit/produit.module';
 import { ProduitService } from 'src/app/services/produit.service';
 
@@ -17,10 +18,12 @@ export class ProduitsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-     this.service_Produit.getAllProduits().subscribe(p => {
+    this.service_Produit.getAllProduits().subscribe(p => {
        this.produits = p
      })
     
   }
+
+
 
 }

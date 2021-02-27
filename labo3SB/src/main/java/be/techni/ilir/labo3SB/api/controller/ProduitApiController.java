@@ -4,10 +4,7 @@ import be.techni.ilir.labo3SB.model.dto.ProduitDTO;
 import be.techni.ilir.labo3SB.model.entities.Produit;
 import be.techni.ilir.labo3SB.model.services.ProduitService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,8 +26,9 @@ public class ProduitApiController implements RestControllable<Produit, ProduitDT
     }
 
     @Override
-    public ResponseEntity<ProduitDTO> getOne(Integer integer) {
-        return null;
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<ProduitDTO> getOne(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(this.produitService.getById(id));
     }
 
     @Override
