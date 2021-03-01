@@ -111,6 +111,10 @@ public class Mapper {
     //--------------------   Produit   ---------------------------
 
     public Produit toProduitEntity(ProduitDTO produitDTO){
+        return toProduitEntity(produitDTO,false);
+    }
+
+    public Produit toProduitEntity(ProduitDTO produitDTO,boolean avecFournisseur){
         return Produit.builder()
                 .id(produitDTO.getId())
                 .nom(produitDTO.getNom())
@@ -121,7 +125,7 @@ public class Mapper {
                 .creationDate(produitDTO.getCreationDate())
                 .updateDate(produitDTO.getUpdateDate())
                 .datePeremption(produitDTO.getDatePeremption())
-                .fournisseur(toFournisseurEntiy(produitDTO.getFournisseur()))
+                .fournisseur(avecFournisseur ? toFournisseurEntiy(produitDTO.getFournisseur()) : null)
                 .categorieList(produitDTO.getCategorieList()
                         .stream()
                         .map(this::toCategorieEntity)
@@ -130,6 +134,10 @@ public class Mapper {
     }
 
     public ProduitDTO toProduitDTO(Produit produit){
+        return toProduitDTO(produit,false);
+    }
+
+    public ProduitDTO toProduitDTO(Produit produit,boolean avecFournisseur){
         return ProduitDTO.builder()
                 .id(produit.getId())
                 .nom(produit.getNom())
@@ -140,7 +148,7 @@ public class Mapper {
                 .creationDate(produit.getCreationDate())
                 .updateDate(produit.getUpdateDate())
                 .datePeremption(produit.getDatePeremption())
-                .fournisseur(toFournisseurDTO(produit.getFournisseur()))
+                .fournisseur(avecFournisseur ? toFournisseurDTO(produit.getFournisseur()) : null)
                 .categorieList(produit.getCategorieList()
                         .stream()
                         .map(this::toCategorieDTO)

@@ -1,6 +1,9 @@
+<h5>Ajouter un produit :</h5>
+<a [routerLink]="['/ajout-produit']"> Ajouter</a>
+
 <h5>Liste produits</h5>
-<ul>
-    <li *ngFor="let p of produits">
-    <p>{{ p.nom }} <td>  <a routerLink="/detail"> detail</a></p>
-    </li>
-</ul>
+<nb-list>
+    <nb-list-item *ngFor="let p of produits;let i = index">
+    <p>{{ p.nom }} <td> <a [routerLink]="['/detail/' + (i+1)]" > detail</a></p>
+    </nb-list-item>
+</nb-list>

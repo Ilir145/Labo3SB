@@ -3,9 +3,11 @@ package be.techni.ilir.labo3SB.api.controller;
 import be.techni.ilir.labo3SB.model.dto.ProduitDTO;
 import be.techni.ilir.labo3SB.model.entities.Produit;
 import be.techni.ilir.labo3SB.model.services.ProduitService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,8 +34,9 @@ public class ProduitApiController implements RestControllable<Produit, ProduitDT
     }
 
     @Override
-    public ResponseEntity<Boolean> insert(Produit produit) {
-        return null;
+    @PostMapping
+    public ResponseEntity<Boolean> insert(@Valid @RequestBody Produit produit) {
+        return ResponseEntity.ok(this.produitService.insert(produit));
     }
 
     @Override

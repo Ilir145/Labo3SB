@@ -4,10 +4,7 @@ import be.techni.ilir.labo3SB.model.dto.UtilisateurDTO;
 import be.techni.ilir.labo3SB.model.entities.Utilisateur;
 import be.techni.ilir.labo3SB.model.services.UtilisateurService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,13 +26,14 @@ public class UtilisateurApiController implements RestControllable<Utilisateur, U
     }
 
     @Override
-    public ResponseEntity<UtilisateurDTO> getOne(Integer integer) {
+    public ResponseEntity<UtilisateurDTO> getOne( Integer id) {
         return null;
     }
 
     @Override
-    public ResponseEntity<Boolean> insert(Utilisateur utilisateur) {
-        return null;
+    @PostMapping
+    public ResponseEntity<Boolean> insert(@RequestBody Utilisateur utilisateur) {
+        return ResponseEntity.ok(this.utilisateurService.insert(utilisateur));
     }
 
     @Override

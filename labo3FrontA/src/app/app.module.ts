@@ -16,6 +16,7 @@ import { DetailUtilisateurComponent } from './components/utilisateur/detail-util
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { NavComponent } from './components/nav/nav.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
+import { AjoutProduitComponent } from './components/produits/ajout-produit/ajout-produit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CategorieComponent } from './components/categorie/categorie.component';
     DetailUtilisateurComponent,
     AccueilComponent,
     NavComponent,
-    CategorieComponent
+    CategorieComponent,
+    AjoutProduitComponent
   ],
   imports: [
     BrowserModule,
