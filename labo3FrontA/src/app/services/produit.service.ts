@@ -31,7 +31,9 @@ export class ProduitService {
 
   insertProduits(produit : NewProduitInfo){
     this._client.post<NewProduitInfo>(this.url+"/produits",produit).subscribe(() => this._router.navigate(['']))
-
   }
 
+  deleteProduit(id : number){
+    this._client.delete<Produit>(this.url+"/produits/"+id).subscribe(() => this._router.navigate([""]))
+  }
 }

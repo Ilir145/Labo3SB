@@ -45,7 +45,8 @@ public class ProduitApiController implements RestControllable<Produit, ProduitDT
     }
 
     @Override
-    public ResponseEntity<Boolean> delete(Integer integer) {
-        return null;
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Integer integer) {
+        return ResponseEntity.ok(this.produitService.delete(integer));
     }
 }

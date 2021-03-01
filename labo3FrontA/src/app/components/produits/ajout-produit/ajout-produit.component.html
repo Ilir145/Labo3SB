@@ -1,0 +1,33 @@
+
+<nb-card>
+    <nb-card-header>
+        Nouveau Produit
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="fg" (submit)="onSubmit()">
+            <nb-list>
+                <nb-list-item>
+                    <label>Nom : </label>
+                    <input nbInput type="text" formControlName="nom">
+                </nb-list-item>
+                <nb-list-item>
+                    <label>Descritpion : </label>
+                    <input nbInput type="text" formControlName="description">
+                </nb-list-item>
+                <nb-list-item>
+                    <label>Prix : </label>
+                    <input nbInput type="number" formControlName="prix">
+                </nb-list-item>
+                <nb-list-item>
+                    <label>Quantite : </label>
+                    <input nbInput type="number" formControlName="quantite">
+                </nb-list-item>
+                <nb-list-item>
+                    <label>Tva : </label>
+                    <input nbInput type="number" formControlName="tva">
+                </nb-list-item>
+            </nb-list>
+            <button type="submit" nbButton status="success" [disabled]="fg.invalid">Valider</button>
+        </form>
+    </nb-card-body>
+</nb-card>

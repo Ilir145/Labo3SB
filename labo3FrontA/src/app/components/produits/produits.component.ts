@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Produit } from 'src/app/modeles/produit/produit.module';
 import { ProduitService } from 'src/app/services/produit.service';
 
@@ -13,7 +14,8 @@ export class ProduitsComponent implements OnInit {
 
 
   constructor(
-    private service_Produit : ProduitService
+    private service_Produit : ProduitService,
+    private _router : Router
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +24,10 @@ export class ProduitsComponent implements OnInit {
      })
     
   }
-
+  
+  deleteProduit(id : number){
+    this.service_Produit.deleteProduit(id)
+  }
 
 
 }

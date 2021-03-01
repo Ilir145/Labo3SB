@@ -3,7 +3,9 @@
 
 <h5>Liste produits</h5>
 <nb-list>
-    <nb-list-item *ngFor="let p of produits;let i = index">
-    <p>{{ p.nom }} <td> <a [routerLink]="['/detail/' + (i+1)]" > detail</a></p>
+    <nb-list-item *ngFor="let p of produits">
+    <p>{{ p.nom }} <td> <a [routerLink]="['/detail/' + p.id]" > detail</a> <td></p>
+    <button type="button"  nbButton outline   size="small" status="danger" (click)="deleteProduit(p.id)">
+          <nb-icon icon="close"></nb-icon> </button>
     </nb-list-item>
 </nb-list>
