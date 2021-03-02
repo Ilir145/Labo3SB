@@ -44,15 +44,81 @@ public class DataInit implements InitializingBean {
 
     );
 
+
+
+
+    private List<Produit> produits = Arrays.asList(
+            Produit.builder()
+                    .nom("Kinder Bueno")
+                    .quantite(300)
+                    .description("Délicieux")
+                    .prix(2D)
+                    .tva(0.12)
+                    .fournisseur(fournisseurs.get(0))
+                    .build(),
+            Produit.builder()
+                    .nom("Kinder Maxi")
+                    .quantite(230)
+                    .description("Tres bon")
+                    .prix(1.50)
+                    .tva(0.12)
+                    .fournisseur(fournisseurs.get(0))
+                    .build(),
+            Produit.builder()
+                    .nom("Kinder Delice")
+                    .quantite(400)
+                    .description("Very good")
+                    .prix(2.75)
+                    .tva(0.12)
+                    .fournisseur(fournisseurs.get(0))
+                    .build(),
+            Produit.builder()
+                    .nom("Kinder Surprise")
+                    .quantite(400)
+                    .description("Avec jouet")
+                    .prix(1.99)
+                    .tva(0.12)
+                    .fournisseur(fournisseurs.get(0))
+                    .build(),
+            Produit.builder()
+                    .nom("Mercurial Vapor")
+                    .quantite(120)
+                    .description("Chaussure de foot tres legere")
+                    .prix(119.99)
+                    .tva(0.15)
+                    .fournisseur(fournisseurs.get(1))
+                    .build(),
+            Produit.builder()
+                    .nom("AlarmS2.0")
+                    .quantite(400)
+                    .description("Alarm avec fonction d appel")
+                    .prix(2000D)
+                    .tva(0.18)
+                    .fournisseur(fournisseurs.get(2))
+                    .build(),
+            Produit.builder()
+                    .nom("Coca zer canette")
+                    .quantite(400)
+                    .description("Canette de coca cola de 33cl")
+                    .prix(0.99)
+                    .tva(0.12)
+                    .fournisseur(fournisseurs.get(0))
+                    .build()
+
+    );
+
     private List<Categorie> categories = Arrays.asList(
             Categorie.builder()
                     .nom("Alimentaire")
+                    .produitList(this.produits.subList(0,2))
                     .build(),
             Categorie.builder()
                     .nom("Confiserie")
+                    .produitList(this.produits.subList(1,3))
                     .build(),
             Categorie.builder()
                     .nom("Sport")
+                    .produitList(this.produits.subList(4,4))
                     .build(),
             Categorie.builder()
                     .nom("Boisson")
@@ -63,73 +129,6 @@ public class DataInit implements InitializingBean {
             Categorie.builder()
                     .nom("Ménager")
                     .build()
-    );
-
-    private List<Produit> produits = Arrays.asList(
-            Produit.builder()
-                    .nom("Kinder Bueno")
-                    .quantite(300)
-                    .description("Délicieux")
-                    .prix(2D)
-                    .tva(0.12)
-                    .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories.subList(0,1))
-                    .build(),
-            Produit.builder()
-                    .nom("Kinder Maxi")
-                    .quantite(230)
-                    .description("Tres bon")
-                    .prix(1.50)
-                    .tva(0.12)
-                    .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories.subList(0,1))
-                    .build(),
-            Produit.builder()
-                    .nom("Kinder Delice")
-                    .quantite(400)
-                    .description("Very good")
-                    .prix(2.75)
-                    .tva(0.12)
-                    .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories.subList(0,1))
-                    .build(),
-            Produit.builder()
-                    .nom("Kinder Surprise")
-                    .quantite(400)
-                    .description("Avec jouet")
-                    .prix(1.99)
-                    .tva(0.12)
-                    .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories.subList(0,1))
-                    .build(),
-            Produit.builder()
-                    .nom("Mercurial Vapor")
-                    .quantite(120)
-                    .description("Chaussure de foot tres legere")
-                    .prix(119.99)
-                    .tva(0.15)
-                    .fournisseur(fournisseurs.get(1))
-                    .categorieList(categories.subList(2,2))
-                    .build(),
-            Produit.builder()
-                    .nom("AlarmS2.0")
-                    .quantite(400)
-                    .description("Alarm avec fonction d appel")
-                    .prix(2000D)
-                    .tva(0.18)
-                    .fournisseur(fournisseurs.get(2))
-                    .categorieList(categories.subList(5,5))
-                    .build(),
-            Produit.builder()
-                    .nom("Coca zer canette")
-                    .quantite(400)
-                    .description("Canette de coca cola de 33cl")
-                    .prix(0.99)
-                    .tva(0.12)
-                    .fournisseur(fournisseurs.get(0))
-                    .categorieList(categories.subList(3,3))
-                    .build()
-
     );
 
     private List<Utilisateur> utilisateurs = Arrays.asList(
@@ -179,10 +178,11 @@ public class DataInit implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         this.fournisseurs.forEach(fournisseurService::insert);
+        this.produits.forEach(produitService::insert);
         this.categories.forEach(categorieService::insert);
         this.utilisateurs.forEach(utilisateurService::insert);
         this.commandes.forEach(commandeService::insert);
-        this.produits.forEach(produitService::insert);
+
 
     }
 }

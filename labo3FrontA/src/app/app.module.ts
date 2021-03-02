@@ -17,6 +17,8 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { NavComponent } from './components/nav/nav.component';
 import { CategorieComponent } from './components/categorie/categorie.component';
 import { AjoutProduitComponent } from './components/produits/ajout-produit/ajout-produit.component';
+import { RechercheComponent } from './components/produits/recherche/recherche.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AjoutProduitComponent } from './components/produits/ajout-produit/ajout
     AccueilComponent,
     NavComponent,
     CategorieComponent,
-    AjoutProduitComponent
+    AjoutProduitComponent,
+    RechercheComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

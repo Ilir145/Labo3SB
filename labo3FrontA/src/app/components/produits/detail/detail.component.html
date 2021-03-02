@@ -1,5 +1,14 @@
+<div *ngIf="produit">
 <h2>{{produit.nom}}</h2>
 
-<p>{{produit.prix}}</p>
-<p>{{produit.description}}</p>
-<p>{{produit.quantite}}</p>
+<p>Prix :{{produit.prix}}</p>
+<p>Description : {{produit.description}}</p>
+<p>Quantite :{{produit.quantite}}</p>
+
+<div *ngIf="produit.categorieList">
+    <h5>Categories : </h5>
+    <nb-list-item *ngFor="let c of produit.categorieList">
+        <p>{{c.nom}}</p>
+    </nb-list-item>
+</div>
+</div>

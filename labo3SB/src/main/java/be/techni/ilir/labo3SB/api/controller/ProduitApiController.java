@@ -1,6 +1,7 @@
 package be.techni.ilir.labo3SB.api.controller;
 
 import be.techni.ilir.labo3SB.model.dto.ProduitDTO;
+import be.techni.ilir.labo3SB.model.entities.Categorie;
 import be.techni.ilir.labo3SB.model.entities.Produit;
 import be.techni.ilir.labo3SB.model.services.ProduitService;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,4 +50,5 @@ public class ProduitApiController implements RestControllable<Produit, ProduitDT
     public ResponseEntity<Boolean> delete(@PathVariable("id") Integer integer) {
         return ResponseEntity.ok(this.produitService.delete(integer));
     }
+
 }

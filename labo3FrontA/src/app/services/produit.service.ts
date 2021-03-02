@@ -36,4 +36,6 @@ export class ProduitService {
   deleteProduit(id : number){
     this._client.delete<Produit>(this.url+"/produits/"+id).subscribe(() => this._router.navigate([""]))
   }
+
+  
 }

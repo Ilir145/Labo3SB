@@ -3,6 +3,7 @@ package be.techni.ilir.labo3SB.model.services;
 import be.techni.ilir.labo3SB.mapper.Mapper;
 import be.techni.ilir.labo3SB.model.dto.ProduitDTO;
 import be.techni.ilir.labo3SB.model.entities.Produit;
+import be.techni.ilir.labo3SB.model.repository.CategorieRepository;
 import be.techni.ilir.labo3SB.model.repository.CommandeRepository;
 import be.techni.ilir.labo3SB.model.repository.FournisseurRepository;
 import be.techni.ilir.labo3SB.model.repository.ProduitRepository;
@@ -24,12 +25,15 @@ public class ProduitService implements Crudable<Produit, ProduitDTO,Integer>{
 
     private final FournisseurRepository fournisseurRepository;
 
+    private final CategorieRepository categorieRepository;
+
     private final Mapper mapper;
 
-    public ProduitService(ProduitRepository produitRepository, CommandeRepository commandeRepository, FournisseurRepository fournisseurRepository, Mapper mapper) {
+    public ProduitService(ProduitRepository produitRepository, CommandeRepository commandeRepository, FournisseurRepository fournisseurRepository, CategorieRepository categorieRepository, Mapper mapper) {
         this.produitRepository = produitRepository;
         this.commandeRepository = commandeRepository;
         this.fournisseurRepository = fournisseurRepository;
+        this.categorieRepository = categorieRepository;
         this.mapper = mapper;
     }
 
@@ -66,4 +70,5 @@ public class ProduitService implements Crudable<Produit, ProduitDTO,Integer>{
         this.produitRepository.deleteById(integer);
         return this.produitRepository.findById(integer).isEmpty();
     }
+
 }

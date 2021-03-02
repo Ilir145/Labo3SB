@@ -73,7 +73,11 @@ public class Mapper {
 
     //--------------------   Fournisseur    ---------------------------
 
-    public Fournisseur toFournisseurEntiy(FournisseurDTO fournisseurDTO){
+    public Fournisseur toFournisseurEntity(FournisseurDTO fournisseurDTO){
+        return this.toFournisseurEntity(fournisseurDTO,false);
+    }
+
+    public Fournisseur toFournisseurEntity(FournisseurDTO fournisseurDTO,boolean withProduit){
         return Fournisseur.builder()
                 .id(fournisseurDTO.getId())
                 .nomEntreprise(fournisseurDTO.getNomEntreprise())
@@ -81,10 +85,10 @@ public class Mapper {
                 .statutSocial(fournisseurDTO.getStatutSocial())
                 .insertionDate(fournisseurDTO.getInsertionDate())
                 .updateDate(fournisseurDTO.getUpdateDate())
-                //.produitList(fournisseurDTO.getProduitList()
-                        //.stream()
-                        //.map(this::toProduitEntity)
-                        //.collect(Collectors.toList()))
+                .produitList(withProduit ? fournisseurDTO.getProduitList()
+                        .stream()
+                        .map(this::toProduitEntity)
+                        .collect(Collectors.toList()) : null)
                 .build();
     }
 
@@ -125,7 +129,7 @@ public class Mapper {
                 .creationDate(produitDTO.getCreationDate())
                 .updateDate(produitDTO.getUpdateDate())
                 .datePeremption(produitDTO.getDatePeremption())
-                .fournisseur(avecFournisseur ? toFournisseurEntiy(produitDTO.getFournisseur()) : null)
+                .fournisseur(avecFournisseur ? toFournisseurEntity(produitDTO.getFournisseur()) : null)
                 .categorieList(produitDTO.getCategorieList()
                         .stream()
                         .map(this::toCategorieEntity)
@@ -158,25 +162,32 @@ public class Mapper {
 
     //--------------------   Categorie   ---------------------------
 
-    public Categorie toCategorieEntity(CategorieDTO categorieDTO){
+    public Categorie toCategorieEntity(CategorieDTO categoriedto){
+        return this.toCategorieEntity(categoriedto,false);
+    }
+
+    public Categorie toCategorieEntity(CategorieDTO categorieDTO,boolean withProduit){
         return Categorie.builder()
                 .id(categorieDTO.getId())
                 .nom(categorieDTO.getNom())
-                .produitList(categorieDTO.getProduitList()
+                .produitList(withProduit ?categorieDTO.getProduitList()
                         .stream()
                         .map(this::toProduitEntity)
-                        .collect(Collectors.toList()))
+                        .collect(Collectors.toList()) : null)
                 .build();
     }
 
     public CategorieDTO toCategorieDTO(Categorie categorie){
+        return this.toCategorieDTO(categorie,false);
+    }
+    public CategorieDTO toCategorieDTO(Categorie categorie,boolean withProduit){
         return CategorieDTO.builder()
                 .id(categorie.getId())
                 .nom(categorie.getNom())
-                .produitList(categorie.getProduitList()
+                .produitList(withProduit ? categorie.getProduitList()
                         .stream()
                         .map(this::toProduitDTO)
-                        .collect(Collectors.toList()))
+                        .collect(Collectors.toList()) : null)
                 .build();
     }
 }
